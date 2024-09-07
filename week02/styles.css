@@ -1,0 +1,27 @@
+body {
+background-color :#001F1F ;
+color: #45FF29;
+font-family: Arial;
+ font-size: 30px;
+ font-weight: 900;
+ text-align: center;
+ padding: 100px;
+ 
+ .image{
+ 	width: 300px;
+ 	height:auto;
+ } 
+ main h1{
+ 	color:blue;
+ }
+ footer h1 {
+ 	color: green;
+ 	box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+ }
+
+ a{
+ 	color: blueviolet;
+  }
+ 
+
+}

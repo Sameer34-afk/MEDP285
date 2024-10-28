@@ -1,0 +1,135 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+    border-bottom: 5px solid #f00;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-item {
+    background-color: #222;
+    padding: 15px;
+    border: 2px solid #f00;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.description {
+    font-size: 14px;
+    color: #ccc;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #0f0;
+    text-shadow: 2px 2px #000;
+}
+
+button {
+    font-family: inherit;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #f00;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    background-color: #222;
+    border: 2px solid #f00;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+}
+
+.popup img {
+    max-width: 100%;
+    height: auto;
+}
+
+.closeAd {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+}
+
+h1, h2 {
+    text-shadow: 2px 2px #f00;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.product-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.7);
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

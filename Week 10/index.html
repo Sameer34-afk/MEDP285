@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Recommendation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h2>Book Recommendation</h2>
+
+<div class="container">
+  <p>Select a genre:</p>
+
+  <select id="genreSelect">
+    <option value="horror">Horror</option>
+    <option value="fiction">Fiction</option>
+    <option value="nonfiction">Non-Fiction</option>
+    <option value="romance">Romance</option>
+  </select>
+
+  <button type="button" onclick="getBookRecommendation()">Get Book Recommendation</button>
+
+  <p id="demo"></p>
+
+  <img id="bookImage" src="" alt="" style="display: none;">
+</div>
+
+<script>
+  function getBookRecommendation() {
+    let genre = document.getElementById('genreSelect').value;
+    let recommendation;
+    let imageUrl;
+
+    if (genre == "horror") {
+      recommendation = "Your book recommendation for Horror: 'The Shining' by Stephen King.";
+      imageUrl = "images/shining.jpg";
+    } else if (genre == "fiction") {
+      recommendation = "Your book recommendation for Fiction: '1984' by George Orwell.";
+      imageUrl = "images/1984.jpg";
+    } else if (genre == "nonfiction") {
+      recommendation = "Your book recommendation for Non-Fiction: 'Sapiens' by Yuval Noah Harari.";
+      imageUrl = "images/sapiens.jpg";
+    } else if (genre == "romance") {
+      recommendation = "Your book recommendation for Romance: 'Pride and Prejudice' by Jane Austen.";
+      imageUrl = "images/pride.jpg";
+    }
+
+    document.getElementById('demo').innerHTML = recommendation;
+
+    let bookImage = document.getElementById('bookImage');
+    bookImage.src = imageUrl;
+    bookImage.style.display = "block";
+  }
+</script>
+
+</body>
+</html>

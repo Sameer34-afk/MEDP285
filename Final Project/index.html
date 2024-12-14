@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Alam Midterm</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+       
+        .main-content {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            gap: 20px; 
+        }
+
+        .services-grid {
+            position: relative;
+            width: 60%; 
+            height: 400px;
+            border: 2px solid #ccc;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .service-item {
+            width: 200px;
+            height: auto;
+            background-color: black;
+            border: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        
+        .video-container {
+            width: 100%; 
+            height: 400px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
+            
+        }
+
+        video {
+            width: 200%; 
+            height: auto; 
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>fakEbay.com</h1>
+        <div class="shopping-cart">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+   
+    <nav>
+        <ul class="nav-bar">
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="explore.html">Explore</a></li>
+        </ul>
+    </nav>
+
+    <main class="product-grid">
+       
+        <section class="product-item">
+            <a href="product1.html">
+                <img src="images/vaccum.jpg" alt="Vacuum Cleaner">
+                <h2>Vacuum Cleaner</h2>
+                <p>Only <span class="price">$20</span>!</p>
+                <p class="description">Kind of like a dyson but way cheaper and better.</p>
+            </a>
+        </section>
+
+        <section class="product-item">
+            <a href="product2.html">
+                <img src="images/toaster.jpg" alt="Toaster">
+                <h2>Toaster</h2>
+                <p>Only <span class="price">$15</span>!</p>
+                <p class="description">This toaster allows you to put a fork in it and still stay alive!</p>
+            </a>
+        </section>
+
+        <section class="product-item">
+            <a href="product3.html">
+                <img src="images/microwave.jpg" alt="Microwave Oven">
+                <h2>Microwave</h2>
+                <p>Only <span class="price">$50</span>!</p>
+                <p class="description">Who needs a stove when you can cook all your food in this microwave!</p>
+            </a>
+        </section>
+
+        <section class="product-item">
+            <a href="product4.html">
+                <img src="images/blender.jpg" alt="Blender">
+                <h2>Blender</h2>
+                <p>Only <span class="price">$30</span>!</p>
+                <p class="description">You can blend anything in this, better than those whack ninja blenders.</p>
+            </a>
+        </section>
+
+        
+        <section class="main-content">
+          
+            <div class="services-grid">
+                <h2>Services</h2>
+                <div class="service-item">
+                    <img src="images/ad1.jpg" alt="Cleaning Service">
+                    <h3>Cleaning Service</h3>
+                    <p>Starting at <span class="price">$100</span>!</p>
+                    <p class="description">We'll clean your house like it's our own.</p>
+                </div>
+                <div class="service-item">
+                    <img src="images/ad2.jpg" alt="Repair Service">
+                    <h3>Repair Service</h3>
+                    <p>Starting at <span class="price">$75</span>!</p>
+                    <p class="description">Fixing all your gadgets, guaranteed.</p>
+                </div>
+                <div class="service-item">
+                    <img src="images/ad3.jpg" alt="Delivery Service">
+                    <h3>Delivery Service</h3>
+                    <p>Starting at <span class="price">$20</span>!</p>
+                    <p class="description">Fast and reliable delivery at your door.</p>
+                </div>
+                <div class="service-item">
+                    <img src="images/ad4.jpg" alt="Consulting Service">
+                    <h3>Consulting Service</h3>
+                    <p>Starting at <span class="price">$150</span>!</p>
+                    <p class="description">Expert advice for all your business needs.</p>
+                </div>
+                
+                
+            
+        </section>
+        <video width="640" height="360" controls>
+            <source src="videos/omegamart.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sameer Alam Midterm</p>
+    </footer>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            const serviceItems = document.querySelectorAll(".service-item");
+
+           
+            function randomizePosition(element) {
+                const parent = element.parentElement; 
+                const parentWidth = parent.offsetWidth;
+                const parentHeight = parent.offsetHeight;
+
+                
+                const maxX = parentWidth - element.offsetWidth;
+                const maxY = parentHeight - element.offsetHeight;
+
+               
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                
+                element.style.left = `${randomX}px`;
+                element.style.top = `${randomY}px`;
+            }
+
+            
+            serviceItems.forEach((item) => {
+                item.addEventListener("click", () => {
+                    randomizePosition(item);
+                });
+            });
+        });
+    </script>
+    <div class="shopping-cart-bottom">
+        <a href="extra.html">🛒</a>
+    </div>
+</body>
+</html>

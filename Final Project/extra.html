@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Game - fakEbay.com</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background: #222;
+            color: #fff;
+        }
+
+        .game-area {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 100px);
+        }
+
+        .cart-area {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 150px;
+            border: 3px dashed #000;
+            text-align: center;
+            padding-top: 50px;
+            font-size: 16px;
+            background: #fff;
+        }
+
+        .object {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            cursor: grab;
+        }
+
+        .timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #222;
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #222;
+            display: none;
+        }
+
+        .instructions {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 18px;
+            color: #222;
+        }
+
+        .back-button {
+            display: none;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: #222;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fill The Shopping Cart</h1>
+    </header>
+
+    <div class="game-area">
+        <div class="timer" id="timer">10</div>
+        <div class="instructions">Drag all items into the shopping cart within 10 seconds to win!</div>
+        <div class="message" id="message"></div>
+        <button class="back-button" id="back-button" onclick="goBack()">Go Back</button>
+
+        <div class="cart-area" id="cart-area">
+            Drag items here
+        </div>
+
+       
+        <img src="images/Product1.jpg" alt="Laptop" class="object" id="laptop">
+        <img src="images/Product1.jpg" alt="Phone" class="object" id="phone">
+        <img src="images/Product2.jpg" alt="Plunger" class="object" id="plunger">
+        <img src="images/Product3.jpg" alt="Book" class="object" id="book">
+        <img src="images/product4.jpg" alt="Mug" class="object" id="mug">
+        <img src="images/Product2.jpg" alt="Shoes" class="object" id="shoes">
+    </div>
+
+    <script>
+        const objects = document.querySelectorAll('.object');
+        const cartArea = document.getElementById('cart-area');
+        const timer = document.getElementById('timer');
+        const message = document.getElementById('message');
+        const backButton = document.getElementById('back-button');
+
+        let timeLeft = 10;
+        let interval;
+        let itemsInCart = 0;
+
+        
+        objects.forEach(obj => {
+            obj.style.top = `${Math.random() * (window.innerHeight - 150)}px`;
+            obj.style.left = `${Math.random() * (window.innerWidth - 150)}px`;
+        });
+
+       
+        objects.forEach(obj => {
+            obj.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('id', obj.id);
+            });
+        });
+
+        
+        cartArea.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+
+        cartArea.addEventListener('drop', e => {
+            e.preventDefault();
+            const id = e.dataTransfer.getData('id');
+            const droppedItem = document.getElementById(id);
+
+            if (!droppedItem.classList.contains('in-cart')) {
+                itemsInCart++;
+                droppedItem.classList.add('in-cart');
+                droppedItem.style.display = 'none';
+
+                if (itemsInCart === objects.length) {
+                    endGame(true);
+                }
+            }
+        });
+
+        
+        function startTimer() {
+            interval = setInterval(() => {
+                timeLeft--;
+                timer.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    endGame(false);
+                }
+            }, 1000);
+        }
+
+        function endGame(won) {
+            clearInterval(interval);
+            message.style.display = 'block';
+            message.textContent = won ? 'You Win! 🎉' : 'You Lose! 😢';
+            backButton.style.display = 'block';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
